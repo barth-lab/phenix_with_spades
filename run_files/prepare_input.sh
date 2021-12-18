@@ -4,7 +4,7 @@ dir=$(pwd)
 loc=$(echo ${dir%/*})
 input=${loc}/input_files
 lilly_filename=${input}/lilly
-database_loc=${input}/rosetta/main/database/
+database_loc=${loc}/rosetta/main/database/
 
 sed "s|lilly|${lilly_filename}|g" ${input}/spades_args_tmp.txt  > ${input}/spades_args.txt
 sed "s|rosetta_database|${database_loc}|g" -i refine.sh
