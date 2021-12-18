@@ -15,5 +15,5 @@ cp ../lilly_rosetta_phenix_001.pdb .
 
 # run rehydration
 ${loc}/run_files/rescore.sh lilly_rosetta_phenix_001.pdb ${loc}
+${loc}/run_files/pdb_remove_far_away_waters.sh reu_lilly_rosetta_phenix_001_copy_0001.pdb lilly_refined_final_waters.pdb
 
-mv reu_lilly_rosetta_phenix_001_copy_0001.pdb lilly_refined_final.pdb
