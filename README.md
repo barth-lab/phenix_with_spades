@@ -31,28 +31,36 @@ First you will need to get the tarballs from zenodo, and move them into the phen
 
 Then, move them into this directory (phenix_with_spades_demo) and decompress them:
 
-```tar -xvf rosetta.tar.gz
-tar -xvf phenix.tar.gz```
+```
+tar -xvf rosetta.tar.gz
+tar -xvf phenix.tar.gz
+```
 
 Next, install rosetta:
 
-```cd rosetta/main/source
-./scons.py bin mode=release -j 10 extras=python```
+```
+cd rosetta/main/source
+./scons.py bin mode=release -j 10 extras=python
+```
 
 Where `j` is the number of cores you want to install across at the same time.
 
 Then, install phenix with:
 
-```cd phenix/
-./install --prefix /path/to/phenix/phenix/install_dir```
+```
+cd phenix/
+./install --prefix /path/to/phenix/phenix/install_dir
+```
 
 Where `/path/to/phenix/` is the current path to phenix (e.g. `/home/lucas/phenix_with_spades_demo/phenix`)
 
 After phenix has installed, you need to compile the interfaced version of rosetta with phenix:
 
-```source /path/to/phenix/phenix/install_dir/phenix-1.19.2-4158/phenix_env.sh
+```
+source /path/to/phenix/phenix/install_dir/phenix-1.19.2-4158/phenix_env.sh
 export PHENIX_ROSETTA_PATH=/path/to/rosetta/rosetta/
-LD_LIBRARY_PATH=/path/to/rosetta/rosetta18_UCS4/main/source/build/src/release/linux/5.8/64/x86/gcc/9/python```
+LD_LIBRARY_PATH=/path/to/rosetta/rosetta18_UCS4/main/source/build/src/release/linux/5.8/64/x86/gcc/9/python
+```
 
 This last line is to ensure there is no confusion in case you have multiple versions of rosetta installed. Note some of the numbers in this line (e.g. 9 towards the end), refers to your gcc compiler, so may be slightly different.
 
@@ -88,9 +96,11 @@ Two folders are included that are critical to running the demo: `input_files` an
 
 Update your environment variables further for the demo (if not following on from install):
 
-```source /path/to/phenix/phenix/install_dir/phenix-1.19.2-4158/phenix_env.sh
+```
+source /path/to/phenix/phenix/install_dir/phenix-1.19.2-4158/phenix_env.sh
 export PHENIX_ROSETTA_PATH=/path/to/rosetta/rosetta/
-LD_LIBRARY_PATH=/path/to/rosetta/rosetta18/main/source/build/src/release/linux/5.8/64/x86/gcc/9/python```
+LD_LIBRARY_PATH=/path/to/rosetta/rosetta18/main/source/build/src/release/linux/5.8/64/x86/gcc/9/python
+```
 
 First, change into the run_files folder (this is where we will run the demo)
 
