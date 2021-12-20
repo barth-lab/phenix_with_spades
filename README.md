@@ -1,5 +1,5 @@
-# Phenix with spades demo
-Demo to replicate results from submitted article on combining phenix with spades for improved structure refinement
+# Phenix with SPaDES demo
+Demo to replicate the method from the submitted article on combining Phenix with SPaDES for improved structure refinement.
 
 ###
 
@@ -7,27 +7,35 @@ Demo to replicate results from submitted article on combining phenix with spades
 
 In brief, Phenix and Rosetta with SPaDES must be installed before running the combined protocol. The approach described in our manuscript was tested with Rosetta 3.7 and Phenix version 1.19.2-4158
 
-Phenix with spades requires Python2.7 to work. This can be done using conda environments, e.g.:
+Phenix with SPaDES requires Python 2.7 to work. This can be done using conda environments, e.g.:
 
-```conda create --name py27 python=2.7```
+```
+conda create --name py27 python=2.7
+```
 
-Creates a python 2.7 environment within linux. This can then be activated:
+Creates a python 2.7 environment within GNU/Linux and other unix-based operating systems. This can then be activated:
 
-```conda activate py27```
+```
+conda activate py27
+```
 
 To run the demo. You can deactivate the environment with:
 
-```conda deactivate```
+```
+conda deactivate
+```
 
 And subsequently delete the environment if you desire:
 
-```conda remove --name py27 --all```
+```
+conda remove --name py27 --all
+```
 
 ## INSTALLATION
 
-The test demo includes some small hard coded statements in phenix to facilitate the inclusion of waters in refinement. In Rosetta, some hydration related movers have been added to ensure compatibility. These will both be merged into the main branches of phenix and rosetta soon, but for ease of testing we include our modified versions of phenix and Rosetta here.
+The test demo includes some small hard coded statements in Phenix to facilitate the inclusion of waters in refinement. In Rosetta, some hydration related movers have been added to ensure compatibility. These will both be merged into the main branches of Phenix and Rosetta soon, but for ease of testing we include our modified versions of Phenix and Rosetta here.
 
-First you will need to get the tarballs from zenodo, and move them into the phenix_with_spades_demo folder: https://zenodo.org/record/5784150#.YboWkCYo_Jk
+First you will need to get the tarballs from Zenodo, and move them into the phenix_with_spades_demo folder: https://zenodo.org/record/5784150#.YboWkCYo_Jk
 
 Then, move them into this directory (phenix_with_spades_demo) and decompress them:
 
@@ -36,7 +44,7 @@ tar -xvf rosetta.tar.gz
 tar -xvf phenix.tar.gz
 ```
 
-Next, install rosetta:
+Next, install Rosetta:
 
 ```
 cd rosetta/main/source
@@ -45,16 +53,16 @@ cd rosetta/main/source
 
 Where `j` is the number of cores you want to install across at the same time.
 
-Then, install phenix with:
+Then, install Phenix with:
 
 ```
 cd phenix/
 ./install --prefix /path/to/phenix/phenix/install_dir
 ```
 
-Where `/path/to/phenix/` is the current path to phenix (e.g. `/home/lucas/phenix_with_spades_demo/phenix`)
+Where `/path/to/phenix/` is the current path to Phenix (e.g. `/home/lucas/phenix_with_spades_demo/phenix`)
 
-After phenix has installed, you need to compile the interfaced version of rosetta with phenix:
+After Phenix has installed, you need to compile the interfaced version of Rosetta with Phenix:
 
 ```
 source /path/to/phenix/phenix/install_dir/phenix-1.19.2-4158/phenix_env.sh
@@ -62,11 +70,13 @@ export PHENIX_ROSETTA_PATH=/path/to/rosetta/rosetta/
 LD_LIBRARY_PATH=/path/to/rosetta/rosetta18_UCS4/main/source/build/src/release/linux/5.8/64/x86/gcc/9/python
 ```
 
-This last line is to ensure there is no confusion in case you have multiple versions of rosetta installed. Note some of the numbers in this line (e.g. 9 towards the end), refers to your gcc compiler, so may be slightly different.
+This last line is to ensure there is no confusion in case you have multiple versions of Rosetta installed. Note some of the numbers in this line (e.g. 9 towards the end), refers to your gcc compiler, so may be slightly different.
 
-Now you can install phenix with rosetta:
+Now you can install Phenix with Rosetta:
 
-```rosetta.build_phenix_interface nproc=10```
+```
+rosetta.build_phenix_interface nproc=10
+```
 
 Note, you may get an error immediately stating that:
 
@@ -74,19 +84,27 @@ Note, you may get an error immediately stating that:
 
 To fix this, you must change:
 
-```phenix.python2.7 options.py```
+```
+phenix.python2.7 options.py
+```
 
 to 
 
-```phenix.python options.py``` 
+```
+phenix.python options.py
+``` 
 
 in update_options.sh, and:
 
-```phenix.python2.7 update_ResidueType_enum_files.py```
+```
+phenix.python2.7 update_ResidueType_enum_files.py
+```
 
 to
 
-```phenix.python update_ResidueType_enum_files.py```
+```
+phenix.python update_ResidueType_enum_files.py
+```
 
 in update_ResidueType_enum_files.sh
 
@@ -104,17 +122,23 @@ LD_LIBRARY_PATH=/path/to/rosetta/rosetta18/main/source/build/src/release/linux/5
 
 First, change into the run_files folder (this is where we will run the demo)
 
-```cd run_files```
+```
+cd run_files
+```
 
 Next run prepare_input.sh in run_files (helps to prepare input files)
 
-```./prepare_input.sh```
+```
+./prepare_input.sh
+```
 
-Note that if you move the rosetta and phenix folders around from their current relative locations, that can ruin the demo setup paths.
+Note that if you move the Rosetta and Phenix folders around from their current relative locations, that can ruin the demo setup paths.
 
-Now run the phenix refine with spades simulation with:
+Now run the Phenix refine with SPaDES simulation with:
 
-```./refine.sh```
+```
+./refine.sh
+```
 
 Note this is setup to run on one processor. You can increase this with `nproc=2` (for 2 processors), but this is a rather memory heavy calculation, so be careful how many processors you run on, or run on a cluster. This calculation (on one processor) can take up to 6 hours.
 
