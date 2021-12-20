@@ -19,7 +19,7 @@ ${ROSETTA}/main/source/bin/hydrate.default.linuxgccrelease \
         -s ${copy_pdb} \
         -hydrate:just_score \
         -overwrite \
-        -out:prefix tmp_ >> /dev/null 2>&1
+        -out:prefix tmp_ 
 mv tmp_*.pdb ${copy_pdb}
 touch tmp.tmp.tmp
 rm *tmp*
@@ -33,7 +33,7 @@ phenix.model_vs_data ${pdbname}.mtz offset.pdb > $(basename ${pdb} .pdb).model_v
 phenix.molprobity ${copy_pdb} outliers_only=False keep_hydrogens=True > $(basename ${pdb} .pdb).molprobity.txt
 
 ${ROSETTA}/main/source/bin/hydrate.default.linuxgccrelease \
-        @${input}flags \
+        @${input}/flags \
         -s ${copy_pdb} \
 	-database ${ROSETTA}/main/database \
         -overwrite \
