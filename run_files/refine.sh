@@ -2,9 +2,9 @@
 
 dir=$(pwd)
 loc=$(echo ${dir%/*})
-DATABASE=rosetta_database
+DATABASE=/home/lrudden/phenix_with_spades_demo/rosetta/main/database/
 
-phenix.rosetta_refine ../input_files/lilly.mtz ../input_files/lilly.pdb refinement.input.xray_data.labels=IMEAN_1,SIGIMEAN_1 input.xray_data.r_free_flags.generate=True script=../input_files/spades_rosetta_refine.xml nproc=1 post_refine=True  database=${DATABASE} verbose=True 
+phenix.rosetta_refine ../input_files/lilly.mtz ../input_files/lilly.pdb refinement.input.xray_data.labels=IMEAN_1,SIGIMEAN_1 input.xray_data.r_free_flags.generate=True script=../input_files/spades_rosetta_refine.xml nproc=2 post_refine=True  database=${DATABASE} verbose=True 
 
 cd rosetta_1
 mkdir hydrate_structure
@@ -15,5 +15,5 @@ cp ../lilly_rosetta_phenix_001.pdb .
 
 # run rehydration
 ${loc}/run_files/rescore.sh lilly_rosetta_phenix_001.pdb ${loc}
-${loc}/run_files/pdb_remove_far_away_waters.sh reu_lilly_rosetta_phenix_001_copy_0001.pdb lilly_refined_final_waters.pdb
+${loc}/run_files/pdb_remove_far_away_waters.sh reu_lilly_rosetta_phenix_001_copy_0001.pdb lilly_refined_final.pdb
 
