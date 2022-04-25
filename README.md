@@ -31,6 +31,17 @@ And subsequently delete the environment if you desire:
 conda remove --name py27 --all
 ```
 
+Additional requirements (in general for combining phenix with Rosetta), include the following:
+
+* Python2 dev tools
+
+
+These can be installed with:
+```
+sudo apt-get install python-dev
+```
+(Or equivalent on other distributions)
+
 ## INSTALLATION
 
 The test demo includes some small hard coded statements in Phenix to facilitate the inclusion of waters in refinement. In Rosetta, some hydration related movers have been added to ensure compatibility. These will both be merged into the main branches of Phenix and Rosetta soon, but for ease of testing we include our modified versions of Phenix and Rosetta here.
