@@ -54,17 +54,7 @@ Then, move them into this directory (phenix_with_spades_demo) and decompress the
 tar -xvf rosetta.tar.gz
 tar -xvf phenix.tar.gz
 ```
-
-Next, install Rosetta:
-
-```
-cd rosetta/main/source
-./scons.py bin mode=release -j 10 extras=python
-```
-
-Where `j` is the number of cores you want to install across at the same time.
-
-Then, install Phenix with:
+Next, install Phenix:
 
 ```
 cd phenix/
@@ -72,52 +62,34 @@ cd phenix/
 ```
 
 Where `/path/to/phenix/` is the current path to Phenix (e.g. `/home/lucas/phenix_with_spades_demo/phenix`)
-
-After Phenix has installed, you need to compile the interfaced version of Rosetta with Phenix:
+After Phenix has installed, you will need to prepare your paths to compile the interfaced version of Rosetta with Phenix. Make sure you put the correct path locations in:
 
 ```
 source /path/to/phenix/phenix/install_dir/phenix-1.19.2-4158/phenix_env.sh
-export PHENIX_ROSETTA_PATH=/path/to/rosetta/rosetta/
-LD_LIBRARY_PATH=/path/to/rosetta/rosetta18_UCS4/main/source/build/src/release/linux/5.8/64/x86/gcc/9/python
+ln -s /path/to/phenix/phenix/install_dir/phenix-1.19.2-4158/conda_base/lib/libpython2.7.so /path/to/rosetta/rosetta/main/source/external/lib/
+LD_LIBRARY_PATH=/path/to/rosetta/rosetta/main/source/build/src/release/linux/5.8/64/x86/gcc/9/python
 ```
 
-This last line is to ensure there is no confusion in case you have multiple versions of Rosetta installed. Note some of the numbers in this line (e.g. 9 towards the end), refers to your gcc compiler, so may be slightly different.
+Note that you won't yet have actually built the rosetta/main/source/build/ folder, but without Rosetta knowing which folder to search for specific python libraries, it will fail on install. The `9` in the LD_LIBRARY_PATH location is dependeing on your version of gcc. One solution, if you're unsure of what to put, is to run the Rosetta install (as follows) without setting LD_LIBRARY_PATH. It will construct the folder, but fail. Then you can check the exact path needed, and set the LD_LIBRARY_PATH as appropiate. You can install Rosetta with:
 
-Now you can install Phenix with Rosetta:
+```
+cd rosetta/main/source
+./scons.py bin mode=release -j 10 extras=python
+```
+
+Where `j` is the number of cores you want to install across at the same time. Note that this version of Rosetta will not search for GitHub version files by default (which is opposite to the nominal behaviour of Rosetta).
+
+After Rosetta has installed, you will need to ensure you have the correct paths present to run the interfaced Rosetta:
+
+```
+export PHENIX_ROSETTA_PATH=/path/to/rosetta/rosetta/
+```
+
+Now you can finish interfacing Phenix with Rosetta:
 
 ```
 rosetta.build_phenix_interface nproc=10
 ```
-
-Note, you may get an error immediately stating that:
-
-> phenix.python2.7 couldn't be found
-
-To fix this, you must change:
-
-```
-phenix.python2.7 options.py
-```
-
-to 
-
-```
-phenix.python options.py
-``` 
-
-in update_options.sh, and:
-
-```
-phenix.python2.7 update_ResidueType_enum_files.py
-```
-
-to
-
-```
-phenix.python update_ResidueType_enum_files.py
-```
-
-in update_ResidueType_enum_files.sh
 
 ## RUNNING THE DEMO
 
