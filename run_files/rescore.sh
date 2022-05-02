@@ -13,7 +13,7 @@ cp ${pdb} ${copy_pdb}
 ${loc}/run_files/pdb_only_atom.sh ${copy_pdb} ${copy_pdb}2
 mv ${copy_pdb}2 ${copy_pdb}
     
-${ROSETTA}/main/source/bin/hydrate.default.linuxgccrelease \
+${ROSETTA}/main/source/bin/hydrate.python.linuxgccrelease \
         @${input}/flags \
 	-database ${ROSETTA}/main/database \
         -s ${copy_pdb} \
@@ -32,7 +32,7 @@ mv cc.log $(basename ${pdb} .pdb).get_cc_mtz_pdb.txt
 phenix.model_vs_data ${pdbname}.mtz offset.pdb > $(basename ${pdb} .pdb).model_vs_data.txt
 phenix.molprobity ${copy_pdb} outliers_only=False keep_hydrogens=True > $(basename ${pdb} .pdb).molprobity.txt
 
-${ROSETTA}/main/source/bin/hydrate.default.linuxgccrelease \
+${ROSETTA}/main/source/bin/hydrate.python.linuxgccrelease \
         @${input}/flags \
         -s ${copy_pdb} \
 	-database ${ROSETTA}/main/database \
