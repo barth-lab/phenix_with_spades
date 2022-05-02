@@ -67,10 +67,10 @@ After Phenix has installed, you will need to prepare your paths to compile the i
 ```
 source /path/to/phenix/phenix/install_dir/phenix-1.19.2-4158/phenix_env.sh
 ln -s /path/to/phenix/phenix/install_dir/phenix-1.19.2-4158/conda_base/lib/libpython2.7.so /path/to/rosetta/rosetta/main/source/external/lib/
-LD_LIBRARY_PATH=/path/to/rosetta/rosetta/main/source/build/src/release/linux/5.8/64/x86/gcc/9/python
+LD_LIBRARY_PATH=/path/to/rosetta/rosetta/main/source/build/src/release/linux/5.13/64/x86/gcc/9/python
 ```
 
-Note that you won't yet have actually built the rosetta/main/source/build/ folder, but without Rosetta knowing which folder to search for specific python libraries, it will fail on install. The `9` in the LD_LIBRARY_PATH location is dependeing on your version of gcc. One solution, if you're unsure of what to put, is to run the Rosetta install (as follows) without setting LD_LIBRARY_PATH. It will construct the folder, but fail. Then you can check the exact path needed, and set the LD_LIBRARY_PATH as appropiate. You can install Rosetta with:
+Note that you won't yet have actually built the rosetta/main/source/build/ folder, but without Rosetta knowing which folder to search for specific python libraries, it will fail on install. The `9` in the LD_LIBRARY_PATH location is depending on your version of gcc. One solution, if you're unsure of what to put, is to run the Rosetta install (as follows) without setting LD_LIBRARY_PATH. It will construct the folder, but fail. Then you can check the exact path needed, and set the LD_LIBRARY_PATH as appropiate. You can install Rosetta with:
 
 ```
 cd rosetta/main/source
