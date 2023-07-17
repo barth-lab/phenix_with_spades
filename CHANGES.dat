@@ -1,0 +1,29 @@
+1) sudo apt-get install python2-dev
+2) add #include "python2.7/Python.h" into src/core/scoring/cryst/PhenixInterface.hh
+2.5) Make this change also in PhenixInterface.cc
+3) Add various options to rosetta ' see README in experimental Rosetta 2022
+4) Changed imports in PhenixInterface.hh and PhenixInterface.cc (work with python 3 already?) - check LSPR signature
+
+
+# Following change to prepare_files.sh in run_files:
+#!/bin/bash
+
+dir=$(pwd)
+loc=$(echo ${dir%/*})
+input=${loc}/input_files
+lilly_filename=${input}/lilly
+
+# rosetta and phenix loc
+database_loc=/data/lrudden/2023-07-26-Rosetta-PHENIX/main/database/
+phenix_loc=/home/dclw/
+rosetta_loc=/data/lrudden/2023-07-26-Rosetta-PHENIX/
+
+sed "s|lilly|${lilly_filename}|g" ${input}/spades_args_tmp.txt  > ${input}/spades_args.txt
+sed "s|rosetta_database|${database_loc}|g" -i refine.sh
+# N.B. These are genearl hydrate weights, however to get sed working cleanly we call them lilly.wts
+sed "s|lilly|${lilly_filename}|g" ${input}/flags_tmp > ${input}/flags
+
+echo "Copying files into phenix needed for rosetta"
+cp ${input}/refine.py ${input}/utils.py ${input}/xray_target.py ${phenix_loc}/phenix/install_dir/phenix-1.19.2-4158/modules/phenix/phenix/rosetta/
+
+# change refine.sh rosetta_path=${ROSETTA_LOC} included in phenix.rosetta_refine

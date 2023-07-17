@@ -42,6 +42,8 @@ sudo apt-get install python-dev
 ```
 (Or equivalent on other distributions)
 
+In running the ion sampling and SPaDES designs, one only needs the most recent build of Rosetta (https://github.com/RosettaCommons/main) and the new hydrate movers and functions provided here.
+
 ## INSTALLATION
 
 The test demo includes some small hard coded statements in Phenix to facilitate the inclusion of waters in refinement. In Rosetta, some hydration related movers have been added to ensure compatibility. These will both be merged into the main branches of Phenix and Rosetta soon, but for ease of testing we include our modified versions of Phenix and Rosetta here.
