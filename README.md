@@ -52,15 +52,15 @@ Then, move them into a directory as you prefer and decompress them:
 tar -xvf rosetta.tar.gz
 tar -xvf phenix.tar.gz
 ```
-Before installing phenix, you need to copy over the changes to the rosetta refinement files such that the spades arguments can be read in
+Before installing phenix, you need to copy over the changes to the rosetta refinement files such that the spades arguments can be read in:
 ```
 cd /path/to/this/folder/phenix_changes/
 cp refine.py /path/to/phenix/modules/phenix/phenix/rosetta/
 cp rosetta_refine.py /path/to/phenix/modules/phenix/phenix/command_line/
 ```
-Where `/path/to/phenix/` is the current path to Phenix (e.g. `/home/lucas/phenix`). When running ```phenix.rosetta_refine``` later on, one can access these extra flags by parsing the ```spades_args=/path/to/flags.file``` argument
+Where `/path/to/phenix/` is the current path to Phenix (e.g. `/home/lucas/phenix`). When running ```phenix.rosetta_refine``` later on, one can access these extra flags by parsing the ```spades_args=/path/to/flags.file``` argument.
 
-Next we can install phenix
+Next we can install phenix:
 ```
 cd phenix/
 ./install --prefix /path/to/phenix/phenix/install_dir
@@ -70,7 +70,7 @@ After Phenix has installed, you will need to prepare your paths to compile the i
 source /path/to/phenix/phenix/install_dir/phenix-1.20.1-4487/phenix_env.sh
 export PHENIX_ROSETTA_PATH=/path/to/rosetta/
 ```
-Prior to installing Rosetta, you will need to copy over the necessary movers/options/protocol files given here.
+Prior to installing Rosetta, you will need to copy over the necessary movers/options/protocol files given here:
 ```
 cd /path/to/this/folder/hydrate_movers
 cp Hydrate* hydrate* Remove* /path/to/rosetta/main/source/src/protocols/hydrate/
@@ -83,32 +83,32 @@ cd ../PROTOCOL_FILES
 cp protocols*.settings /path/to/rosetta/main/source/src/
 cp init.Mover*ihh /path/to/rosetta/main/source/src/protocols/init/
 ```
-While the hydrate, options, protocol and Mover.ihh files are introduced by us for SPaDES, the site.settings is a necessary insert from phenix (https://phenix-online.org/documentation/extras/site.settings) while the PhenixInterface correction was proposed by a user owing to missing imports (https://rosettacommons.org/node/11491)
+While the hydrate, options, protocol and Mover.ihh files are introduced by us for SPaDES, the site.settings is a necessary insert from phenix (https://phenix-online.org/documentation/extras/site.settings) while the PhenixInterface correction was proposed by a user owing to missing imports (https://rosettacommons.org/node/11491).
 
 Now you've copied the necessary files, we can install Rosetta:
 ```
 cd rosetta/main/source
 rosetta.build_phenix_interface nproc=10
 ```
-Where nproc represents the number of cores you want to install across at the same time. The above command replaces the more standard
+Where nproc represents the number of cores you want to install across at the same time. The above command replaces the more standard:
 ```
 ./scons.py bin mode=release -j 10
 ```
 
 ## Running the demo
 
-Two folders are included that are critical to running the demo: `input_files` and `run_files`. You will need to make two small changes in `refine.sh` to indicate the path to Rosetta and its database (see `PATH/TO/ROSETTA` in file). After that, you shouldn't need to edit any files in any of these locations
+Two folders are included that are critical to running the demo: `input_files` and `run_files`. You will need to make two small changes in `refine.sh` to indicate the path to Rosetta and its database (see `PATH/TO/ROSETTA` in file). After that, you shouldn't need to edit any files in any of these locations.
 
 Update your environment variables further for the demo (if not following on from install):
 ```
 source /path/to/phenix/phenix/install_dir/phenix-1.19.2-4158/phenix_env.sh
 export PHENIX_ROSETTA_PATH=/path/to/rosetta/rosetta/
 ```
-Change into the run_files folder (this is where we will run the demo)
+Change into the run_files folder (this is where we will run the demo):
 ```
 cd run_files
 ```
-Next run prepare_input.sh in run_files (helps to prepare input files)
+Next run prepare_input.sh in run_files (helps to prepare input files):
 ```
 ./prepare_input.sh
 ```
