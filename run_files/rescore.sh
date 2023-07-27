@@ -2,8 +2,7 @@
 
 loc=${2}
 input=${loc}/input_files
-
-ROSETTA=${loc}/rosetta
+ROSETTA=${3}
 
 pdb=${1}
 pdbname=$(echo "${pdb}" | cut -d'.' -f1)
@@ -29,7 +28,7 @@ mv ${copy_pdb}2 ${copy_pdb}
 
 phenix.get_cc_mtz_pdb mtz_in=${pdbname}.mtz pdb_in=${pdb} > $(basename ${pdb} .pdb).get_cc_mtz_pdb.log
 mv cc.log $(basename ${pdb} .pdb).get_cc_mtz_pdb.txt
-phenix.model_vs_data ${pdbname}.mtz offset.pdb > $(basename ${pdb} .pdb).model_vs_data.txt
+phenix.model_vs_data ${pdbname}.mtz ${pdbname}_offset.pdb > $(basename ${pdb} .pdb).model_vs_data.txt
 phenix.molprobity ${copy_pdb} outliers_only=False keep_hydrogens=True > $(basename ${pdb} .pdb).molprobity.txt
 
 ${ROSETTA}/main/source/bin/hydrate.python.linuxgccrelease \
