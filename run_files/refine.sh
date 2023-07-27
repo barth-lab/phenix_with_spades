@@ -6,7 +6,7 @@ DATABASE=/PATH/TO/ROSETTA/DATABASE
 ROSETTA_LOC=/PATH/TO/ROSETTA
 INPUT_FILES=${loc}/input_files
 
-phenix.rosetta_refine ${INPUT_FILE}/lilly.mtz ${INPUT_FILE}/lilly.pdb refinement.input.xray_data.labels=IMEAN_1,SIGIMEAN_1 input.xray_data.r_free_flags.generate=True script=${INPUT_FILE}/spades_rosetta_refine.xml nproc=2 post_refine=True  database=${DATABASE} verbose=True spades_args=${INPUT_FILE}/spades_args.txt
+phenix.rosetta_refine ${INPUT_FILES}/lilly.mtz ${INPUT_FILES}/lilly.pdb refinement.input.xray_data.labels=IMEAN_1,SIGIMEAN_1 input.xray_data.r_free_flags.generate=True script=${INPUT_FILES}/spades_rosetta_refine.xml nproc=2 post_refine=True  database=${DATABASE} verbose=True spades_args=${INPUT_FILES}/spades_args.txt
 
 cd rosetta_1
 mkdir hydrate_structure
