@@ -1,3 +1,4 @@
+
 from __future__ import division
 from __future__ import print_function
 import libtbx.introspection
@@ -300,6 +301,7 @@ class run_refinement_trials (object) :
                 database=None,
                 script_file=None,
                 ligand_params_files=(),
+                spades_args=None,
                 debug=False) :
     adopt_init_args(self, locals())
     assert (prefix is not None)
@@ -312,6 +314,7 @@ class run_refinement_trials (object) :
     self.best_model = None
     self.best_hierarchy = None
     self.best_structure = None
+    self.spades_args = spades_args
     self.d_min = fmodel.f_obs().d_min()
     fmodel.info().show_targets(out=out, text="starting model")
     self.data_file = prefix + "_data.mtz"
@@ -334,10 +337,6 @@ class run_refinement_trials (object) :
     if (script_file is None) :
       script_file = find_script_file("low_resolution_refine.xml")
       assert (script_file is not None)
-    spades_path = os.path.dirname(os.path.realpath(script_file))
-    spades_args = []
-    with open(spades_path + "/spades_args.txt") as f:
-        spades_args = f.read().splitlines()
     args = [
       "-parser:protocol %s" % script_file,
       "-s %s" % self.pdb_file, #os.path.abspath(self.pdb_file),
@@ -349,13 +348,16 @@ class run_refinement_trials (object) :
       "-parser:script_vars map_type=%s" % self.params.map_type,
       "-nstruct 1",
     ]
-    args += spades_args[:-1]
     if (self.params.ignore_unrecognized) :
       args.append("-ignore_unrecognized_res")
     if (len(self.ligand_params_files) > 0) :
       args.append("-extra_res_fa %s" % " ".join(self.ligand_params_files))
     if (self.database is not None) :
       args.append("-database %s" % self.database)
+    if (self.spades_args):
+      with open(self.spades_args) as f:
+        spades_args = f.read().splitlines()
+      args += spades_args
     self.args = args
     if (self.debug) :
       print("", file=self.out)

@@ -55,8 +55,8 @@
 
 <RemoveWatersMover name="rmwater" />
 <RemoveFarAwayWatersMover name="rmfaraway" />
-<HydratePackerMover name="hydrate_soft" scorefxn="dens_soft" />
-<HydratePackerMover name="hydrate" scorefxn="dens" />
+<HydratePackerMover name="hydrate_soft" scorefxn="dens_soft" pretalaris2013="true" />
+<HydratePackerMover name="hydrate" scorefxn="dens" pretalaris2013="true" />
         <DumpPdb name="stage1dump1" fname="stage1dump1" scorefxn="rescore" tag_time="1" />
         <DumpPdb name="stage1dump2" fname="stage1dump2" scorefxn="rescore" tag_time="1" />
         <DumpPdb name="stage1dump3" fname="stage1dump3" scorefxn="rescore" tag_time="1" />
