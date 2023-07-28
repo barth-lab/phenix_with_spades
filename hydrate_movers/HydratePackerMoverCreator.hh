@@ -9,7 +9,7 @@
 
 /// @file protocols/hydrate/HydratePackerMoverCreator.hh
 /// @brief This class will create instances of protocols::moves::Mover HydratePackerMover for the protocols::moves::MoverFactory
-/// @author Jason K. Lai
+/// @author Jason K. Lai, Lucas S. P. Rudden
 
 #ifndef INCLUDED_protocols_hydrate_HydratePackerMoverCreator_hh
 #define INCLUDED_protocols_hydrate_HydratePackerMoverCreator_hh

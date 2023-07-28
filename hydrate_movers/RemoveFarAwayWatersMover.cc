@@ -10,7 +10,7 @@
 /// @file src/protocols/hydrate/Hydrate.cc
 /// @brief A protocol to add explicit water molecules as part of Hydrate/SPaDES.
 /// @detailed
-/// @author Joaquin Ambia Garrido, Jason K. Lai
+/// @author Joaquin Ambia Garrido, Jason K. Lai, Lucas S. P. Rudden
 
 // unit headers
 #include <protocols/hydrate/RemoveFarAwayWatersMover.hh>

@@ -9,7 +9,7 @@
 /// @file src/protocols/hydrate/Hydrate.cc
 /// @brief The Hydrate Protocol
 /// @detailed
-/// @author Joaquin Ambia, Jason K. Lai, Lucas S. P. Rudden
+/// @author Lucas S. P. Rudden
 
 // Protocols
 #include <protocols/grafting/simple_movers/DeleteRegionMover.hh>

@@ -9,7 +9,7 @@
 /// @file src/protocols/hydrate/Hydrate.cc
 /// @brief The Hydrate Protocol
 /// @detailed
-/// @author Joaquin Ambia, Jason K. Lai
+/// @author Lucas S. P. Rudden
 
 #ifndef INCLUDED_protocols_hydrate_hydrate_remove_functions_HH
 #define INCLUDED_protocols_hydrate_hydrate_remove_functions_HH

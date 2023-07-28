@@ -9,7 +9,7 @@
 
 /// @file protocols/hydrate/RemoveFarAwayWatersMoverCreator.hh
 /// @brief This class will create instances of protocols::moves::Mover RemoveFarAwayWatersMover for the protocols::moves::MoverFactory
-/// @author Jason K. Lai
+/// @author Jason K. Lai, Lucas S. P. Rudden
 
 #ifndef INCLUDED_protocols_hydrate_RemoveFarAwayWatersMoverCreator_hh
 #define INCLUDED_protocols_hydrate_RemoveFarAwayWatersMoverCreator_hh

@@ -10,7 +10,7 @@
 /// @file src/protocols/hydrate/HydratePackerMover.hh
 /// @brief The HydratePacker mover protocol
 /// @detailed
-/// @author Joaquin Ambia, Jason K. Lai
+/// @author Joaquin Ambia, Jason K. Lai, Lucas S. P. Rudden
 
 #ifndef INCLUDED_protocols_hydrate_HydratePackerMover_HH
 #define INCLUDED_protocols_hydrate_HydratePackerMover_HH

@@ -9,7 +9,7 @@
 /// @file src/protocols/hydrate/RemoveWatersMover.cc
 /// @brief The RemoveWaters mover protocol
 /// @detailed
-/// @author Joaquin Ambia, Jason K. Lai
+/// @author Joaquin Ambia, Jason K. Lai, Lucas S. P. Rudden
 
 #ifndef INCLUDED_protocols_hydrate_RemoveWatersMover_fwd_hh
 #define INCLUDED_protocols_hydrate_RemoveWatersMover_fwd_hh
