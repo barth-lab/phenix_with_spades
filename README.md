@@ -121,6 +121,10 @@ Note this is setup to run on one processor. You can increase this with `nproc=2`
 
 At the end of the calculation, you should have a new folder called rosetta_1 (or 2, 3 etc. if you have run multiple times). Inside this folder, you will find the output of phenix.refine, and a folder called hydrate_structure. Inside this folder, you will find lilly_refined_final.pdb, which is the final structure of interest post refinement.
 
+## Crystal Structure ##
+
+The deposited PDB structure does not contain any waters since they were not resolved through the electron density, but rather placed by SPaDES during the Rosetta Phenix refinement protocol. We include the structure with those SPaDES water here.
+
 ## Troubleshooting
 
 Depending on your installed version of Rosetta, the `-restore_pre_talaris_2013_behavior true` flag in the spades_args.txt file in input_files can cause a segmentation fault when using rosetta_scripts. It is unknown why this occurs, but to be safe we have included the flag within the HydrateMover so you can remove it - although ideally you should keep it if you can for the density functions. This flag should still work regardless with the hydrate commandline function. 
